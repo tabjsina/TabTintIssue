@@ -1,8 +1,13 @@
 package tabjsina.tabtintissue;
 
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -65,6 +70,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // set up tab icon 1
+        TabLayout.Tab tab1 = tabLayout.getTabAt(0);
+        VectorDrawableCompat iconVector = VectorDrawableCompat.create(getResources(), R.drawable.ic_tab_vector, getTheme());
+        Drawable mutated1 = iconVector.mutate();
+        ColorStateList stateList1 = ContextCompat.getColorStateList(this, R.color.tab_color_selector);
+        DrawableCompat.setTintList(mutated1, stateList1);
+        tab1.setIcon(mutated1);
+        tab1.setContentDescription("tab 1");
+
+        // set up tab icon 2
+        TabLayout.Tab tab = tabLayout.getTabAt(1);
+        Drawable iconDrawable = ContextCompat.getDrawable(this, R.drawable.ic_tab_image);
+        Drawable mutated2 = iconDrawable.mutate();
+        ColorStateList stateList = ContextCompat.getColorStateList(this, R.color.tab_color_selector);
+        DrawableCompat.setTintList(mutated2, stateList);
+        tab.setIcon(mutated2);
+        tab.setContentDescription("tab 2");
     }
 
 
